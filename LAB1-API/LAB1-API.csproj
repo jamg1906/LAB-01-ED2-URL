@@ -5,9 +5,5 @@
     <RootNamespace>LAB1_API</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
 
 </Project>
