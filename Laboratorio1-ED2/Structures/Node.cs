@@ -44,7 +44,7 @@ namespace Laboratorio1_ED2
 
         private void SortValuesWithinNode()
         {
-            for (int i = 0; i < (Valores.Length-capacityLeft)-1; i++)
+            for (int i = 0; i < (m-capacityLeft)-1; i++)
             {
                 for (int j = 0; j < (Valores.Length-capacityLeft) - i -1; j++)
                 {

@@ -16,6 +16,8 @@ namespace Laboratorio1_ED2_ConsoleApp
             Console.ReadKey();
             for (int i = 0; i< 100; i++)
             {
+                //Console.WriteLine("Inserte un número");
+                //Tree.InsertMultiWay(Convert.ToInt32(Console.ReadLine()));
                 Tree.InsertMultiWay(ElRandom.Next(1,500));
             }
             Console.ReadKey();
