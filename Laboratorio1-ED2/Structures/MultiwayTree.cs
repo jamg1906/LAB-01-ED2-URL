@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using Laboratorio1_ED2;
 
 namespace Laboratorio1_ED2
 {
-    class MultiwayTree<T> where T: IComparable
+    public class MultiwayTree<T> where T: IComparable
     {
         Node<T> root { get; set; }
         public static int m = 2;
@@ -22,7 +20,8 @@ namespace Laboratorio1_ED2
                 Node<T> temp = root;
                 int[] ParentsIndex = new int[2];
                 Node<T> temp2 = temp;
-                while (temp.capacityLeft == 0)
+                bool a = true;
+                while (temp.capacityLeft == 0 && a)
                 {
                     bool found = false;
                     for (int i = 0; i < (m - 1); i++)
@@ -31,27 +30,37 @@ namespace Laboratorio1_ED2
                         if (value.CompareTo(temp.Valores[i]) == -1 && !found)
                         {
                             found = true;
+                            temp.Children[i] = new Node<T>(value, m);
                             temp = temp.Children[i];
+                            temp.ParentNode = temp2;
+                            a = false;
                             ParentsIndex[0] = i;
                             ParentsIndex[1] = i++;
+                            break;
 
                         }
                         else if (i == ((m - 1) - 1) && !found)
                         {
+                            found = true;
+                            temp.Children[m - 1] = new Node<T>(value, m);
                             temp = temp.Children[m - 1];
+                            temp.ParentNode = temp2;
+                            a = false;
                             ParentsIndex[0] = i;
                             ParentsIndex[1] = i++;
+                            break;
                         }
                     }
                 }
+                /*
                 if (temp == null)
                 {
                     temp = new Node<T>(value, m);
                     temp.ParentNode = temp2;
-                    temp.Parents[0] = temp.ParentNode.Valores[ParentsIndex[0]];
-                    temp.Parents[1] = temp.ParentNode.Valores[ParentsIndex[1]];
-                }
-                else
+                    //temp.Parents[0] = temp.ParentNode.Valores[ParentsIndex[0]];
+                    //temp.Parents[1] = temp.ParentNode.Valores[ParentsIndex[1]];
+                }*/
+                if (a)
                 {
                     temp.InsertInNode(value);
                 }
