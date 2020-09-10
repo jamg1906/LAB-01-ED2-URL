@@ -12,6 +12,7 @@ namespace Laboratorio1_ED2
         public T[] Parents = new T[2];
         public Node<T> ParentNode;
         public Node<T>[] Children;
+        public int usedSpace = 0;
 
 
         public Node(T value, int MNode)
@@ -21,6 +22,7 @@ namespace Laboratorio1_ED2
             Valores = new T[m -1];
             capacityLeft = m-1;
             capacityLeft--;
+            usedSpace++;
             Valores[0] = value;
         }
 
@@ -28,6 +30,7 @@ namespace Laboratorio1_ED2
         {
             Valores[m - capacityLeft - 1] = value;
             capacityLeft--;
+            usedSpace++;
             /*for (int i = 0; i < Valores.Length; i++)
             {
                 if (Valores[i] == null)
@@ -36,17 +39,14 @@ namespace Laboratorio1_ED2
                     capacityLeft--;
                 }
             }*/
-            if (capacityLeft == 0)
-            {
-                SortValuesWithinNode();
-            }
+            SortValuesWithinNode();
         }
 
         private void SortValuesWithinNode()
         {
-            for (int i = 0; i < (m-capacityLeft)-1; i++)
+            for (int i = 0; i < usedSpace -1; i++)
             {
-                for (int j = 0; j < (Valores.Length-capacityLeft) - i -1; j++)
+                for (int j = 0; j < usedSpace - i -1; j++)
                 {
                     if(Valores[j].CompareTo(Valores[j+1]) == 1)
                     {
