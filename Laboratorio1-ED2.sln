@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laboratorio1-ED2", "Laboratorio1-ED2\Laboratorio1-ED2.csproj", "{9D125679-D740-4C79-8575-A4E2AE3EAA00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Laboratorio1-ED2", "Laboratorio1-ED2\Laboratorio1-ED2.csproj", "{9D125679-D740-4C79-8575-A4E2AE3EAA00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAB1-API", "LAB1-API\LAB1-API.csproj", "{63A08ECE-C29C-4F17-8895-9580601A4209}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LAB1-API", "LAB1-API\LAB1-API.csproj", "{63A08ECE-C29C-4F17-8895-9580601A4209}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laboratorio1-ED2-ConsoleApp", "Laboratorio1-ED2-ConsoleApp\Laboratorio1-ED2-ConsoleApp.csproj", "{890C162F-0EE0-428E-A5B8-29DB606C5EFD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{63A08ECE-C29C-4F17-8895-9580601A4209}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63A08ECE-C29C-4F17-8895-9580601A4209}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63A08ECE-C29C-4F17-8895-9580601A4209}.Release|Any CPU.Build.0 = Release|Any CPU
+		{890C162F-0EE0-428E-A5B8-29DB606C5EFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{890C162F-0EE0-428E-A5B8-29DB606C5EFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{890C162F-0EE0-428E-A5B8-29DB606C5EFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{890C162F-0EE0-428E-A5B8-29DB606C5EFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

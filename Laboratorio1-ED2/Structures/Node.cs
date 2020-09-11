@@ -1,20 +1,62 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Laboratorio1_ED2
 {
-    public class Node<T>
+    class Node<T> where T:IComparable
     {
         public static int m;
         public T Value { get; set; }
-        public T[] Valores = new T[m - 1];
-        private Node<T>[] Parents = new Node<T>[2];
-        private Node<T>[] Children = new Node<T>[m];
+        public T[] Valores;
+        public int capacityLeft;
+        public T[] Parents = new T[2];
+        public Node<T> ParentNode;
+        public Node<T>[] Children;
+        public int usedSpace = 0;
 
 
-        public Node(T value)
+        public Node(T value, int MNode)
         {
-            //aquí habría que hacer la asignación de valores y llamar al método de ordenar
-            Value = value;
+            m = MNode;
+            Children= new Node<T>[m];
+            Valores = new T[m -1];
+            capacityLeft = m-1;
+            capacityLeft--;
+            usedSpace++;
+            Valores[0] = value;
+        }
+
+        public void InsertInNode(T value)
+        {
+            Valores[m - capacityLeft - 1] = value;
+            capacityLeft--;
+            usedSpace++;
+            /*for (int i = 0; i < Valores.Length; i++)
+            {
+                if (Valores[i] == null)
+                {
+                    Valores[i] = value;
+                    capacityLeft--;
+                }
+            }*/
+            SortValuesWithinNode();
+        }
+
+        private void SortValuesWithinNode()
+        {
+            for (int i = 0; i < usedSpace -1; i++)
+            {
+                for (int j = 0; j < usedSpace - i -1; j++)
+                {
+                    if(Valores[j].CompareTo(Valores[j+1]) == 1)
+                    {
+                        //swap de valores dentro del nodo
+                        T temp = Valores[j];
+                        Valores[j] = Valores[j + 1];
+                        Valores[j + 1] = temp;
+                    }
+                }
+            }
         }
 
     }

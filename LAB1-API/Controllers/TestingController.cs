@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LAB1_API.Controllers
-{
+{/*
     [Route("api/[controller]")]
     [ApiController]
     public class TestingController : ControllerBase
@@ -42,5 +42,5 @@ namespace LAB1_API.Controllers
             };
             return profession;
         }
-    }
+    }*/
 }
