@@ -9,7 +9,6 @@ namespace Laboratorio1_ED2
         public T Value { get; set; }
         public T[] Valores;
         public int capacityLeft;
-        public T[] Parents = new T[2];
         public Node<T> ParentNode;
         public Node<T>[] Children;
         public int usedSpace = 0;
@@ -31,14 +30,6 @@ namespace Laboratorio1_ED2
             Valores[m - capacityLeft - 1] = value;
             capacityLeft--;
             usedSpace++;
-            /*for (int i = 0; i < Valores.Length; i++)
-            {
-                if (Valores[i] == null)
-                {
-                    Valores[i] = value;
-                    capacityLeft--;
-                }
-            }*/
             SortValuesWithinNode();
         }
 

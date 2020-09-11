@@ -18,7 +18,6 @@ namespace Laboratorio1_ED2
             else
             {
                 Node<T> temp = root;
-                int[] ParentsIndex = new int[2];
                 Node<T> temp2 = temp;
                 bool a = true;
                 while (temp.capacityLeft == 0 && a)
@@ -56,53 +55,9 @@ namespace Laboratorio1_ED2
                                 a = false;
                             }
                             found = true;
-
-                            /*
-                            found = true;
-                            try
-                            {
-                                bool goNext = true;
-                                try
-                                {
-                                    if (temp.capacityLeft == 0)
-                                    {
-                                        found = false;
-                                    }
-                                }
-                                temp.Children[i].InsertInNode(value);
-                                temp = temp.Children[i];
-                            }
-                            catch
-                            {
-                                temp.Children[i] = new Node<T>(value, m);
-                                temp = temp.Children[i];
-                            }
-                            temp.ParentNode = temp2;
-                            a = false;
-                            ParentsIndex[0] = i;
-                            ParentsIndex[1] = i++;
-                            break;*/
-
                         }
                         else if (i == ((m - 1) - 1) && !found)
                         {
-                            /*
-                            found = true;
-                            try
-                            {
-                                temp.Children[m-1].InsertInNode(value);
-                                temp = temp.Children[m - 1];
-                            }
-                            catch
-                            {
-                                temp.Children[m - 1] = new Node<T>(value, m);
-                                temp = temp.Children[m - 1];
-                            }
-                            temp.ParentNode = temp2;
-                            a = false;
-                            ParentsIndex[0] = i;
-                            ParentsIndex[1] = i++;
-                            break;*/
                             //Significa que el valor va en el último subarbol.
                             try
                             {
@@ -133,14 +88,6 @@ namespace Laboratorio1_ED2
                         }
                     }
                 }
-                /*
-                if (temp == null)
-                {
-                    temp = new Node<T>(value, m);
-                    temp.ParentNode = temp2;
-                    //temp.Parents[0] = temp.ParentNode.Valores[ParentsIndex[0]];
-                    //temp.Parents[1] = temp.ParentNode.Valores[ParentsIndex[1]];
-                }*/
                 if (a)
                 {
                     temp.InsertInNode(value);
