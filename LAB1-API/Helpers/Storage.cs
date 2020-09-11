@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LAB1_API.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,7 +18,6 @@ namespace LAB1_API.Helpers
                 return _instance;
             }
         }
-
-
+        public static Laboratorio1_ED2.MultiwayTree<mMovies> MovieTree = new Laboratorio1_ED2.MultiwayTree<mMovies>();
     }
 }

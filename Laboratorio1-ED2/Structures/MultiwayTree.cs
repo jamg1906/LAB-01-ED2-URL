@@ -18,6 +18,7 @@ namespace Laboratorio1_ED2
             else
             {
                 Node<T> temp = root;
+                //temp2 servirá para enlazar el nodo padre al crear un nuevo hino
                 Node<T> temp2 = temp;
                 bool a = true;
                 while (temp.capacityLeft == 0 && a)
