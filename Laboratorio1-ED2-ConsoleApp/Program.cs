@@ -22,6 +22,32 @@ namespace Laboratorio1_ED2_ConsoleApp
                 Tree.InsertMultiWay(ElRandom.Next(1,500));
             }
             Console.WriteLine("Se ha llenado satisfactoriamente el árbol.");
+            List<int> PinchiRecorrido = Tree.Inorder();
+            string result = "";
+            int iterardor = 1;
+            foreach(int number in PinchiRecorrido)
+            {
+                result += number.ToString()+ ",";
+                if((iterardor%4)==0)
+                {
+                    result += Environment.NewLine; 
+                }
+                iterardor++;
+            }
+            Console.WriteLine(result+Environment.NewLine+"Termino aqui");
+            PinchiRecorrido = Tree.Preorder();
+             result = "";
+             iterardor = 0;
+            foreach (int number in PinchiRecorrido)
+            {
+                result += number.ToString();
+                if ((iterardor % 4) == 0)
+                {
+                    result += Environment.NewLine;
+                }
+            }
+            Console.WriteLine(result + Environment.NewLine + "Termino aqui");
+
             Console.ReadKey();
         }
     }

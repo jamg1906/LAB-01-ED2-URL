@@ -184,8 +184,39 @@ namespace Laboratorio1_ED2
             return resul;
         }
 
-
-
+        public List<T> Inorder()
+        {
+            List<T> Respre = new List<T>();
+            Node<T> Guia = root;
+            for (int i = 0; i < Guia.usedSpace + 1; i++)
+            {
+                if (Guia.Children[i] != null)
+                {
+                    RecorInorder(Respre, Guia.Children[i]);
+                }
+                if (i < Guia.usedSpace)
+                {
+                    Respre.Add(Guia.Valores[i]);
+                }
+            }
+            return Respre;
+        }
+        private List<T> RecorInorder(List<T> resul, Node<T> hijo)
+        {
+            Node<T> Guia = hijo;
+            for (int i = 0; i < Guia.usedSpace + 1; i++)
+            {
+                if (Guia.Children[i] != null)
+                {
+                    RecorInorder(resul, Guia.Children[i]);
+                }
+                if (i < Guia.usedSpace)
+                {
+                    resul.Add(Guia.Valores[i]);
+                }
+            }
+            return resul;
+        }
 
 
 
