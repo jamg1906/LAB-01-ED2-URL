@@ -22,8 +22,9 @@ namespace LAB1_API.Models
         public int RottenTomatoesRating { get => rottenTomatoesRating; set => rottenTomatoesRating = value; }
         public string Title { get => title; set => title = value; }
 
-        public int CompareTo(mMovies Movie)
+        public int CompareTo(object obj)
         {
+            var Movie = (mMovies)obj;
             if (Title.CompareTo(Movie.Title) != 0)
             {
                 return Title.CompareTo(Movie.title);

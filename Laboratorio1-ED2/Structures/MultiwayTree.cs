@@ -6,9 +6,14 @@ namespace Laboratorio1_ED2
     public class MultiwayTree<T> where T: IComparable
     {
         Node<T> root { get; set; }
-        public static int m = 2;
-        public static int Count = 0;
-        
+        public int m = 2;
+        public int Count = 0;
+
+        public void SetM(int val)
+        {
+            m = val;
+        }
+
         public void InsertMultiWay(T value)
         {
             if (root == null)
