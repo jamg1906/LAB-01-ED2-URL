@@ -24,20 +24,27 @@ namespace LAB1_API.Models
 
         public int CompareTo(object obj)
         {
-            var Movie = (mMovies)obj;
-            if (Title.CompareTo(Movie.Title) != 0)
+            try
             {
-                return Title.CompareTo(Movie.title);
+                var Movie = (mMovies)obj;
+                if (Title.CompareTo(Movie.Title) != 0)
+                {
+                    return Title.CompareTo(Movie.title);
+                }
+                else if (ReleaseDate.CompareTo(Movie.ReleaseDate) != 0)
+                {
+                    return ReleaseDate.CompareTo(Movie.ReleaseDate);
+                }
+                else if (RottenTomatoesRating.CompareTo(Movie.RottenTomatoesRating) != 0)
+                {
+                    return RottenTomatoesRating.CompareTo(Movie.RottenTomatoesRating);
+                }
+                return 0;
             }
-            else if (ReleaseDate.CompareTo(Movie.ReleaseDate) != 0)
+            catch
             {
-                return ReleaseDate.CompareTo(Movie.ReleaseDate);
+                return 0;
             }
-            else if (RottenTomatoesRating.CompareTo(Movie.RottenTomatoesRating) != 0)
-            {
-                return RottenTomatoesRating.CompareTo(Movie.RottenTomatoesRating);
-            }
-            return 0;
         }
     }
 }
