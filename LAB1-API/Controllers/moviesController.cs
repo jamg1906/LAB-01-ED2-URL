@@ -21,21 +21,28 @@ namespace LAB1_API.Controllers
         {
             try
             {
-                traversal = traversal.ToLower();
-                List<mMovies> Result = new List<mMovies>();
-                if (traversal.Equals("preorder"))
+                if(Storage.MoviesTree.MultiwayPeli!=null)
                 {
-                    Result = Storage.MoviesTree.MultiwayPeli.Preorder();
+                    traversal = traversal.ToLower();
+                    List<mMovies> Result = new List<mMovies>();
+                    if (traversal.Equals("preorder"))
+                    {
+                        Result = Storage.MoviesTree.MultiwayPeli.Preorder();
+                    }
+                    else if (traversal.Equals("inorder"))
+                    {
+                        Result = Storage.MoviesTree.MultiwayPeli.Inorder();
+                    }
+                    else if (traversal.Equals("postorder"))
+                    {
+                        Result = Storage.MoviesTree.MultiwayPeli.Postorder();
+                    }
+                    return Created("", Result);
                 }
-                else if (traversal.Equals("inorder"))
+                else
                 {
-                    Result = Storage.MoviesTree.MultiwayPeli.Inorder();
+                    return Ok("Data export failed");
                 }
-                else if (traversal.Equals("postorder"))
-                {
-                    Result = Storage.MoviesTree.MultiwayPeli.Postorder();
-                }
-                return Created("", Result);
             }
             catch
             {
@@ -51,6 +58,7 @@ namespace LAB1_API.Controllers
             {
                 if(!(Tree.Order<1))
                 {
+                    
                     Storage.MoviesTree.Order = Tree.Order;
                     Storage.MoviesTree.MultiwayPeli = new Laboratorio1_ED2.MultiwayTree<mMovies>();
                     Storage.MoviesTree.MultiwayPeli.SetM(Tree.Order);
