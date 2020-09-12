@@ -12,7 +12,7 @@ namespace LAB1_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class moviesController : ControllerBase
+    public class MoviesController : ControllerBase
     {
 
         // GET api/<moviesController>/inorder
@@ -52,6 +52,7 @@ namespace LAB1_API.Controllers
                 if(!(Tree.Order<1))
                 {
                     Storage.MoviesTree.Order = Tree.Order;
+                    Storage.MoviesTree.MultiwayPeli = new Laboratorio1_ED2.MultiwayTree<mMovies>();
                     Storage.MoviesTree.MultiwayPeli.SetM(Tree.Order);
                     return Ok("El orden del árbol es:" + Tree.Order);
                 }
@@ -68,7 +69,7 @@ namespace LAB1_API.Controllers
 
 
         // GET: api/<moviesController>
-        [HttpPost]
+        [HttpPost("populate")]
         public ActionResult Post([FromBody] List<mMovies> movList)
         {
             try
