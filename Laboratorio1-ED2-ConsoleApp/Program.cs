@@ -160,7 +160,7 @@ namespace Laboratorio1_ED2_ConsoleApp
                                         }
                                         Console.WriteLine(result);
                                         TitleTraversal(3);
-                                        Recorrido = RandomTree.Posorder();
+                                        Recorrido = RandomTree.Postorder();
                                         result = "";
                                         iterardor = 1;
                                         foreach (int number in Recorrido)
@@ -265,7 +265,7 @@ namespace Laboratorio1_ED2_ConsoleApp
                                         }
                                         Console.WriteLine(result);
                                         TitleTraversal(3);
-                                        Recorrido = Tree.Posorder();
+                                        Recorrido = Tree.Postorder();
                                         result = "";
                                         iterardor = 1;
                                         foreach (int number in Recorrido)
