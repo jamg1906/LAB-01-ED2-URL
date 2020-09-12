@@ -6,7 +6,7 @@ namespace Laboratorio1_ED2
     public class MultiwayTree<T> where T: IComparable
     {
         Node<T> root { get; set; }
-        public int m = 2;
+        private int m = 2;
         public int Count = 0;
 
         public void SetM(int val)
@@ -23,7 +23,7 @@ namespace Laboratorio1_ED2
             else
             {
                 Node<T> temp = root;
-                //temp2 servirá para enlazar el nodo padre al crear un nuevo hino
+                //temp2 servirá para enlazar el nodo padre al crear un nuevo hijo
                 Node<T> temp2 = temp;
                 bool a = true;
                 while (temp.capacityLeft == 0 && a)
@@ -171,7 +171,7 @@ namespace Laboratorio1_ED2
             return resul;
         }
 
-        public List<T> Posorder()
+        public List<T> Postorder()
         {
             List<T> Respre = new List<T>();
             Node<T> Guia = root;

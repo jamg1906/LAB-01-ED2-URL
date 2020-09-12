@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LAB1_API.Helpers;
+using LAB1_API.Models;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -17,68 +19,76 @@ namespace LAB1_API.Controllers
         [HttpGet("{traversal}")]
         public ActionResult GetByDate([FromRoute] string traversal)
         {
-            traversal = traversal.ToLower();
-            var order = 2;
-            if (traversal.Equals("preorder"))
+            try
             {
-                 order = 2 /*Aqui se debe regresar el ordenamiento preorder, a traves del metodo*/;
+                traversal = traversal.ToLower();
+                List<mMovies> Result = new List<mMovies>();
+                if (traversal.Equals("preorder"))
+                {
+                    Result = Storage.MoviesTree.MultiwayPeli.Preorder();
+                }
+                else if (traversal.Equals("inorder"))
+                {
+                    Result = Storage.MoviesTree.MultiwayPeli.Inorder();
+                }
+                else if (traversal.Equals("postorder"))
+                {
+                    Result = Storage.MoviesTree.MultiwayPeli.Postorder();
+                }
+                return Created("", Result);
             }
-            else if (traversal.Equals("inorder"))
+            catch
             {
-                 order = 2 /*Aqui se debe regresar el ordenamiento inorder, a traves del metodo*/;
+                return Ok("Data export failed");
             }
-            else if (traversal.Equals("postorder"))
-            {
-                 order = 2 /*Aqui se debe regresar el ordenamiento postorder, a traves del metodo*/;
-            }
-
-            if (order == null) return NotFound();
-            //Se devuelve el texto ordenado
-            return Ok(order);
         }
 
-
+        //Post para recibir el orden del MultiWayTree
         [HttpPost]
-        public ActionResult Post([FromBody] string Tipo)
+        public ActionResult Post([FromBody] mTree Tree)
         {
-            int cantidadhijos = int.Parse(Tipo);
-
-            
-            return BadRequest();
+            try
+            {
+                if(!(Tree.Order<1))
+                {
+                    Storage.MoviesTree.Order = Tree.Order;
+                    Storage.MoviesTree.MultiwayPeli.SetM(Tree.Order);
+                    return Ok("El orden del árbol es:" + Tree.Order);
+                }
+                else
+                {
+                    return Ok("El orden debe ser mayor a 1");
+                }
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
-
 
 
         // GET: api/<moviesController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/<moviesController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<moviesController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult Post([FromBody] List<mMovies> movList)
         {
+            try
+            {
+                if(Storage.MoviesTree.MultiwayPeli!=null)
+                {
+                    foreach (mMovies pelicula in movList)
+                    {
+                        Storage.MoviesTree.MultiwayPeli.InsertMultiWay(pelicula);  
+                    }
+                    return Ok("OK");
+                }
+                return Ok("InternalServerError");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
         }
 
-        // PUT api/<moviesController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
 
-        // DELETE api/<moviesController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

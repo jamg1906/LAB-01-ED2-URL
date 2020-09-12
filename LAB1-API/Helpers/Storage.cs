@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Laboratorio1_ED2;
 
 namespace LAB1_API.Helpers
 {
@@ -18,6 +19,7 @@ namespace LAB1_API.Helpers
                 return _instance;
             }
         }
-        public static Laboratorio1_ED2.MultiwayTree<mMovies> MovieTree = new Laboratorio1_ED2.MultiwayTree<mMovies>();
+         public static mTree MoviesTree = new mTree();
+        // public static MultiwayTree<mMovies> MovieTree = new Laboratorio1_ED2.MultiwayTree<mMovies>();
     }
 }
